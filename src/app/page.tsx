@@ -114,7 +114,7 @@ export default function HomePage() {
         </div>
 
         {/* CENTER CONSOLE: BOT SELECTOR & RETRO DISPLAY */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-99">
           <div className="pointer-events-auto w-full max-w-lg relative">
             
             {/* Carousel Navigation Buttons */}
