@@ -12,17 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Dynamic Base URL Configuration
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://eyebattle.com";
+const siteUrl = "https://eyebattle.abhinavdubey.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "EyeBattle • Free Online Arcade & Staring Contest Games",
+    default: "EyeBattle • Free Online Arcade & AI Staring Contest Games",
     template: "%s • EyeBattle Games",
   },
   description:
-    "Play free instant browser games! Challenge AI bots in webcam stare-downs, test your reflex reactions, and battle friends in 1v1 online duels.",
+    "Play free instant browser camera games! Challenge AI bots in real-time webcam stare-downs, test your reflex reactions, and battle friends online.",
   keywords: [
     "staring contest online",
     "don't blink game",
@@ -31,10 +30,16 @@ export const metadata: Metadata = {
     "stare down bot",
     "1v1 online games no download",
     "viral camera games",
+    "eye battle game",
   ],
-  authors: [{ name: "EyeBattle Team" }],
-  creator: "EyeBattle",
+  authors: [{ name: "Abhinav Dubey", url: "https://abhinavdubey.in" }],
+  creator: "Abhinav Dubey",
   publisher: "EyeBattle Arcade",
+  icons: {
+    icon: "/abhinavdubeygame.png",
+    shortcut: "/abhinavdubeygame.png",
+    apple: "/abhinavdubeygame.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -47,11 +52,19 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "EyeBattle • Free Online Arcade & Staring Contest Games",
+    title: "EyeBattle • Free Online Arcade & AI Staring Contest Games",
     description:
       "Can you out-stare an AI? Play free webcam face tracking games, dodge flashbangs, and flex your win streaks online.",
     url: siteUrl,
     siteName: "EyeBattle Arcade",
+    images: [
+      {
+        url: `${siteUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "EyeBattle Arena - Lock In Or Get Cooked Stare Contest",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -60,6 +73,7 @@ export const metadata: Metadata = {
     title: "EyeBattle • Free Browser Games & Stare-down Arena",
     description:
       "Play real-time camera stare-down games vs AI bots directly in your browser. No download required.",
+    images: [`${siteUrl}/og-image.jpg`],
   },
   category: "Gaming",
 };
@@ -69,11 +83,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Schema.org Structured Data for Search Engine Rich Snippets
+  // Schema.org Structured Data for Google Rich Results
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "EyeBattle Arcade",
+    url: siteUrl,
+    image: `${siteUrl}/og-image.jpg`,
+    author: {
+      "@type": "Person",
+      name: "Abhinav Dubey",
+      url: "https://abhinavdubey.in",
+    },
     operatingSystem: "Web Browser",
     applicationCategory: "GameApplication",
     genre: "Arcade, Action, Multiplayer",
@@ -92,7 +113,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Inject JSON-LD Script for Google SEO indexing */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
